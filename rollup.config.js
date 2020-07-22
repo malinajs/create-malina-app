@@ -1,5 +1,6 @@
 import builtins from 'builtin-modules';
 import {terser} from 'rollup-plugin-terser';
+import json from '@rollup/plugin-json';
 import pkg from './package.json';
 
 const dev = !!process.env.ROLLUP_WATCH;
@@ -16,6 +17,7 @@ export default [{
         ...Object.keys(pkg.dependencies || {})
     ],
     plugins: [
+        json(),
         !dev && terser(),
     ],
     watch: {
