@@ -24,7 +24,6 @@ function asyncExec(command,cwd){
         try{
             exec(command,{cwd},(err,stdout)=>{
                 return err ? reject(err) : resolve(stdout);
-                
             })
         }catch(e){
             reject(e.message);

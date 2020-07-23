@@ -11,7 +11,7 @@ export async function getAppName(dir){
         type: 'text',
         name: 'name',
         message: 'Name of a new Malina.js app',
-        validate:v=> /^[a-zA-Z-_]+$/.test(v) ? true : 'Use only letters, digits and hyphen',
+        validate:v=> /^[a-zA-Z-_0-9]+$/.test(v) ? true : 'Use only letters, digits and hyphen',
         initial: 'malina-app'
     },opts)).name;
 
