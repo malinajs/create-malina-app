@@ -2,7 +2,7 @@
   "name": "create-malina",
   "version": "0.1.0",
   "description": "CLI tool for MalinaJS Projects",
-  "main": "src/malina.js",
+  "main": "bin/malina",
   "bin": {
     "malina": "bin/malina"
   },
