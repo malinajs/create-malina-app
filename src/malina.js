@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import sade from 'sade';
 import pkg from './../package.json';
 import {getAppName,getTemplateRepo} from './prompts';

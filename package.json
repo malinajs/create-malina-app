@@ -7,8 +7,8 @@
     "malina": "bin/malina"
   },
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -cw",
+    "build": "node esbuild",
+    "dev": "node esbuild --dev",
     "malina": "bin/malina",
     "pretest": "npm run build",
     "test": "node tests/run | tap-diff"
@@ -31,16 +31,11 @@
   "homepage": "https://github.com/malinajs/create-malina-app#readme",
   "devDependencies": {
     "@detools/tap-diff": "^0.2.2",
-    "@rollup/plugin-commonjs": "^14.0.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^8.4.0",
-    "builtin-modules": "^3.1.0",
+    "esbuild": "^0.8.5",
     "fetch-repo-dir": "^1.0.4",
     "fs-extra": "^9.0.1",
     "kleur": "^4.0.2",
     "prompts": "^2.3.2",
-    "rollup": "^2.22.2",
-    "rollup-plugin-terser": "^6.1.0",
     "sade": "^1.7.3",
     "strip-ansi": "^6.0.0",
     "tape-modern": "^1.1.2"
