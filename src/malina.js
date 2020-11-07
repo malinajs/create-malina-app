@@ -1,6 +1,6 @@
 import sade from 'sade';
 import pkg from './../package.json';
-import {getAppName} from './prompts';
+import {getAppName,getTemplateRepo} from './prompts';
 import {showMalinaBanner} from './banner';
 import {loadTemplate,installDependencies} from './files';
 import {spinner} from './spinner';
@@ -19,9 +19,10 @@ cli
     showMalinaBanner();
     try{
       const name = await getAppName(dir);
+      const template = await getTemplateRepo();
 
       stop = spinner('Downloading template',1);
-        await loadTemplate('malinajs/template',name);
+        await loadTemplate(template,name);
       stop(true);
 
       stop = spinner('Installing dependencies',2);

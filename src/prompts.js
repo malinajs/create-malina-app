@@ -28,3 +28,24 @@ export async function getAppName(dir){
 
     return name;
 }
+
+export async function getTemplateRepo(){
+
+    let opts = {
+        onCancel:_=>process.exit(0)
+    }
+
+    const name = (await prompts({
+        type: 'select',
+        name: 'template',
+        message: 'Starter template',
+        choices: [
+            { title: 'Default', description: 'Recomended', value: 'malinajs/template' },
+            { title: 'Default (esbuild)', description: 'Based on ESBuild bundler', value: 'malinajs/template#esbuild' },
+        ],
+        initial: 0
+    },opts)).template;
+
+
+    return name;
+}
