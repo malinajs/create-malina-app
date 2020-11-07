@@ -14,7 +14,7 @@ test('Prepare', async t => {
 
 test('Default run', async t => {
 
-    const name = 'test-malina-app1';
+    const name = 'test-malina-default';
     const appdir = path.join(TEST_DIR,name);
     const somefile = path.join(appdir,'package.json');
     const somemodule = path.join(appdir,'node_modules','malinajs');
@@ -22,7 +22,44 @@ test('Default run', async t => {
     const result = await storyCLI(`${BIN}`,[
         { 
             wait:'Name of a new Malina.js app',
-            reply:name,
+            reply: [name,'\x0D']
+        },
+        { 
+            wait:'Starter template',
+            reply:'\x0D',
+        },
+        { 
+            wait:'1. Downloading template. ✔ Done!'
+        },
+        { 
+            wait:'2. Installing dependencies. ✔ Done!'
+        },
+        { 
+            wait:'Congratulations, your app is ready!'
+        },
+    ],{cwd:TEST_DIR});
+    t.ok(result.err !== 'Incomplete story','Story is ok');
+
+    t.ok(fs.existsSync(appdir),'App directory created');
+    t.ok(fs.existsSync(somefile),'Template downloaded');
+    t.ok(fs.existsSync(somemodule),'Dependencies installed');
+});
+
+test('Select another template', async t => {
+
+    const name = 'test-malina-app-tpl';
+    const appdir = path.join(TEST_DIR,name);
+    const somefile = path.join(appdir,'package.json');
+    const somemodule = path.join(appdir,'node_modules','esbuild');
+
+    const result = await storyCLI(`${BIN}`,[
+        { 
+            wait:'Name of a new Malina.js app',
+            reply: [name,'\x0D']
+        },
+        { 
+            wait:'Starter template',
+            reply:['\033[B','\x0D'],
         },
         { 
             wait:'1. Downloading template. ✔ Done!'
@@ -48,7 +85,7 @@ test('Invalid name', async t => {
     const result = await storyCLI(`${BIN}`,[
         { 
             wait:'Name of a new Malina.js app',
-            reply:name,
+            reply:[name,'\x0D'],
         },
         { 
             wait:'Use only letters, digits and hyphen'
@@ -70,11 +107,15 @@ test('Run with overwrite when directory exists', async t => {
     const result = await storyCLI(`${BIN}`,[
         { 
             wait:'Name of a new Malina.js app',
-            reply:name,
+            reply:[name,'\x0D'],
         },
         { 
             wait:'already exists! Overwrite?',
-            reply:'y'
+            reply:['y','\x0D']
+        },
+        { 
+            wait:'Starter template',
+            reply:'\x0D',
         },
         { 
             wait:'Congratulations, your app is ready!'

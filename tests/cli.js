@@ -30,7 +30,10 @@ module.exports = function(command,story,options){
             result.stdout += chunk;
             if(next) {
                 if(chunk.indexOf(next.wait) > -1){
-                    if(next.reply) child.stdin.write(next.reply + '\n');
+                    if(next.reply) {
+                        if(!Array.isArray(next.reply)) next.reply = [next.reply];
+                        next.reply.forEach( input => child.stdin.write(input));
+                    }
                     result.story.push('PASS: '+next.wait+(next.reply ? ' -> '+next.reply : ''));
                     next = story.shift();
                     if(!next) child.kill();
