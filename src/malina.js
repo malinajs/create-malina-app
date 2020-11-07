@@ -19,7 +19,7 @@ cli
     showMalinaBanner();
     try{
       const name = await getAppName(dir);
-      const template = await getTemplateRepo();
+      const template = await getTemplateRepo(dir);
 
       stop = spinner('Downloading template',1);
         await loadTemplate(template,name);
