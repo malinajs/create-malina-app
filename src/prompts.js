@@ -46,6 +46,7 @@ export async function getTemplateRepo(dir){
         choices: [
             { title: 'Default', description: 'Recomended', value: DEFAULT },
             { title: 'Default (esbuild)', description: 'Based on ESBuild bundler', value: 'malinajs/template#esbuild' },
+            { title: 'Desktop (electron)', description: 'Based on Electorn and ESBuild bundler', value: 'malinajs/template#electron' },
         ],
         initial: 0
     },opts)).template;
