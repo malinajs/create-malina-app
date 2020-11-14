@@ -1,0 +1,17 @@
+[
+    { 
+        "title": "Default", 
+        "description": "Recomended", 
+        "value": "malinajs/template" 
+    },
+    { 
+        "title": "Default (esbuild)", 
+        "description": "Based on ESBuild bundler", 
+        "value": "malinajs/template#esbuild"
+    },
+    { 
+        "title": "Desktop (electron)", 
+        "description": "Based on Electorn and ESBuild bundler", 
+        "value": "malinajs/template#electron" 
+    }
+]

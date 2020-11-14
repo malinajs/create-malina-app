@@ -1,5 +1,6 @@
 import prompts from 'prompts';
 import { isDir } from './files';
+import templates from './templates.json';
 
 export async function getAppName(dir){
 
@@ -31,9 +32,7 @@ export async function getAppName(dir){
 
 export async function getTemplateRepo(dir){
 
-    const DEFAULT = 'malinajs/template';
-
-    if(dir) return DEFAULT;
+    if(dir) return templates[0].value;
 
     let opts = {
         onCancel:_=>process.exit(0)
@@ -43,11 +42,7 @@ export async function getTemplateRepo(dir){
         type: 'select',
         name: 'template',
         message: 'Starter template',
-        choices: [
-            { title: 'Default', description: 'Recomended', value: DEFAULT },
-            { title: 'Default (esbuild)', description: 'Based on ESBuild bundler', value: 'malinajs/template#esbuild' },
-            { title: 'Desktop (electron)', description: 'Based on Electorn and ESBuild bundler', value: 'malinajs/template#electron' },
-        ],
+        choices: templates,
         initial: 0
     },opts)).template;
 }
