@@ -1,5 +1,5 @@
 const {spawn} = require('child_process');
-const stripAnsi = require('strip-ansi');
+const stripAnsi = require('better-strip-color');
 
 module.exports = function(command,story,options){
     const cmd = command.split(' ')[0];

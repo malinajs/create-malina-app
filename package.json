@@ -11,7 +11,7 @@
     "dev": "node esbuild --dev",
     "malina": "bin/malina",
     "pretest": "npm run build",
-    "test": "node tests/run | tap-diff"
+    "test": "node tests/run"
   },
   "repository": {
     "type": "git",
@@ -30,14 +30,13 @@
   },
   "homepage": "https://github.com/malinajs/create-malina-app#readme",
   "devDependencies": {
-    "@detools/tap-diff": "^0.2.2",
-    "esbuild": "^0.8.5",
+    "better-strip-color": "^1.0.2",
+    "esbuild": "^0.12.8",
     "fetch-repo-dir": "^1.0.4",
     "fs-extra": "^9.0.1",
-    "kleur": "^4.0.2",
-    "prompts": "^2.3.2",
-    "sade": "^1.7.3",
-    "strip-ansi": "^6.0.0",
-    "tape-modern": "^1.1.2"
+    "kleur": "^4.1.4",
+    "prompts": "^2.4.1",
+    "sade": "^1.7.4",
+    "uvu": "^0.5.1"
   }
 }

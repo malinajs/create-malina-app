@@ -1,18 +1,19 @@
 const path = require('path');
 const fs = require('fs-extra');
-const { test,done } = require('tape-modern');
+const { test } = require('uvu');
+const { ok } = require('uvu/assert');
 const storyCLI = require('./cli');
 
 const TEST_DIR = path.resolve(path.join(__dirname,'__tmp'));
 const BIN = 'node '+path.resolve(path.join('bin','malina'));
 
-test('Prepare', async t => {
+test('Prepare', async () => {
     fs.removeSync(TEST_DIR);
     fs.mkdirSync(TEST_DIR);
-    t.pass('Tmp test dir created');
+    ok(fs.existsSync(TEST_DIR),'Tmp test dir created');
 });
 
-test('Default run', async t => {
+test('Default run', async () => {
 
     const name = 'test-malina-default';
     const appdir = path.join(TEST_DIR,name);
@@ -38,14 +39,14 @@ test('Default run', async t => {
             wait:'Congratulations, your app is ready!'
         },
     ],{cwd:TEST_DIR});
-    t.ok(result.err !== 'Incomplete story','Story is ok');
+    ok(result.err !== 'Incomplete story','Story is ok');
 
-    t.ok(fs.existsSync(appdir),'App directory created');
-    t.ok(fs.existsSync(somefile),'Template downloaded');
-    t.ok(fs.existsSync(somemodule),'Dependencies installed');
+    ok(fs.existsSync(appdir),'App directory created');
+    ok(fs.existsSync(somefile),'Template downloaded');
+    ok(fs.existsSync(somemodule),'Dependencies installed');
 });
 
-test('Select another template', async t => {
+test('Select another template', async () => {
 
     const name = 'test-malina-app-tpl';
     const appdir = path.join(TEST_DIR,name);
@@ -71,14 +72,14 @@ test('Select another template', async t => {
             wait:'Congratulations, your app is ready!'
         },
     ],{cwd:TEST_DIR});
-    t.ok(result.err !== 'Incomplete story','Story is ok');
+    ok(result.err !== 'Incomplete story','Story is ok');
 
-    t.ok(fs.existsSync(appdir),'App directory created');
-    t.ok(fs.existsSync(somefile),'Template downloaded');
-    t.ok(fs.existsSync(somemodule),'Dependencies installed');
+    ok(fs.existsSync(appdir),'App directory created');
+    ok(fs.existsSync(somefile),'Template downloaded');
+    ok(fs.existsSync(somemodule),'Dependencies installed');
 });
 
-test('Invalid name', async t => {
+test('Invalid name', async () => {
 
     const name = '%invalid%';
 
@@ -91,10 +92,10 @@ test('Invalid name', async t => {
             wait:'Use only letters, digits and hyphen'
         }
     ],{cwd:TEST_DIR,timeout:3000});
-    t.ok(result.err !== 'Incomplete story','Story is ok');
+    ok(result.err !== 'Incomplete story','Story is ok');
 });
 
-test('Run with overwrite when directory exists', async t => {
+test('Run with overwrite when directory exists', async () => {
 
     const name = 'existent_dir';
     const appdir = path.join(TEST_DIR,name);
@@ -102,7 +103,7 @@ test('Run with overwrite when directory exists', async t => {
     const somemodule = path.join(appdir,'node_modules','malinajs');
 
     fs.mkdirSync(appdir);
-    t.ok(fs.existsSync(appdir),'Empty dir created');
+    ok(fs.existsSync(appdir),'Empty dir created');
 
     const result = await storyCLI(`${BIN}`,[
         { 
@@ -122,13 +123,13 @@ test('Run with overwrite when directory exists', async t => {
         },
     ],{cwd:TEST_DIR});
 
-    t.ok(result.err !== 'Incomplete story','Story is ok');
-    t.ok(fs.existsSync(appdir),'App directory created');
-    t.ok(fs.existsSync(somefile),'Template downloaded');
-    t.ok(fs.existsSync(somemodule),'Dependencies installed');
+    ok(result.err !== 'Incomplete story','Story is ok');
+    ok(fs.existsSync(appdir),'App directory created');
+    ok(fs.existsSync(somefile),'Template downloaded');
+    ok(fs.existsSync(somemodule),'Dependencies installed');
 });
 
-test('Run with dir in command line', async t => {
+test('Run with dir in command line', async () => {
 
     const name = 'cli_dir';
     const appdir = path.join(TEST_DIR,name);
@@ -141,14 +142,16 @@ test('Run with dir in command line', async t => {
         },
     ],{cwd:TEST_DIR});
 
-    t.ok(result.err !== 'Incomplete story','Story is ok');
-    t.ok(fs.existsSync(appdir),'App directory created');
-    t.ok(fs.existsSync(somefile),'Template downloaded');
-    t.ok(fs.existsSync(somemodule),'Dependencies installed');
+    ok(result.err !== 'Incomplete story','Story is ok');
+    ok(fs.existsSync(appdir),'App directory created');
+    ok(fs.existsSync(somefile),'Template downloaded');
+    ok(fs.existsSync(somemodule),'Dependencies installed');
 });
 
-test('Clean up', async t => {
+test('Clean up', async () => {
     fs.removeSync(TEST_DIR);
-    t.pass('all tmd files was removed');
+    ok(!fs.existsSync(TEST_DIR),'all tmd files was removed');
 });
 
+
+test.run();
