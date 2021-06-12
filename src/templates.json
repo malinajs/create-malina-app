@@ -6,8 +6,13 @@
     },
     { 
         "title": "Default (esbuild)", 
-        "description": "Based on ESBuild bundler", 
+        "description": "Based on esbuild bundler", 
         "value": "malinajs/template#esbuild"
+    },
+    { 
+        "title": "Fullstack (esbuild,derver)", 
+        "description": "Template for baking app with client and server", 
+        "value": "malinajs/template#esbuild-fullstack"
     },
     { 
         "title": "Desktop (electron)", 
