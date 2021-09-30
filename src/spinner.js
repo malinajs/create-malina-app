@@ -1,14 +1,14 @@
-import k from 'kleur';
+import { green, red, bold } from 'picocolors';
 
 const spin = [
-    `[${k.green('   ')}]`,
-    `[${k.green('.  ')}]`,
-    `[${k.green('.. ')}]`,
-    `[${k.green('...')}]`,
+    `[${green('   ')}]`,
+    `[${green('.  ')}]`,
+    `[${green('.. ')}]`,
+    `[${green('...')}]`,
 ]
 
 export function spinner(message,num){
-    message = num ? `${k.bold(num)}. ${message}` : message;
+    message = num ? `${bold(num)}. ${message}` : message;
     let i = 0;
     const timer = setInterval(()=>{
         process.stdout.write(`${message}. ${spin[i++]}\r`);
@@ -18,8 +18,8 @@ export function spinner(message,num){
         if(ok === undefined) ok = true;
         clearInterval(timer);
         if(ok)
-            process.stdout.write(`${message}. ${k.green('✔')} Done!\n`);
+            process.stdout.write(`${message}. ${green('✔')} Done!\n`);
         else
-            process.stdout.write(`${message}. ${k.red('✖')} Fail!\n`);
+            process.stdout.write(`${message}. ${red('✖')} Fail!\n`);
     }
 }
