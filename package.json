@@ -31,9 +31,9 @@
   "homepage": "https://github.com/malinajs/create-malina-app#readme",
   "devDependencies": {
     "better-strip-color": "^1.0.2",
-    "esbuild": "^0.12.8",
+    "esbuild": "^0.13.3",
     "fetch-repo-dir": "^1.0.4",
-    "fs-extra": "^9.0.1",
+    "fs-extra": "^10.0.0",
     "picocolors": "^0.1.0",
     "prompts": "^2.4.1",
     "sade": "^1.7.4",
