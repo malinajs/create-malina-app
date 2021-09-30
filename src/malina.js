@@ -6,7 +6,7 @@ import {getAppName,getTemplateRepo} from './prompts';
 import {showMalinaBanner} from './banner';
 import {loadTemplate,installDependencies} from './files';
 import {spinner} from './spinner';
-import k from 'kleur';
+import { bold, italic, yellow, cyan } from 'picocolors';
 
 const cli = sade('malina [name]', true);
 
@@ -31,12 +31,12 @@ cli
         await installDependencies(name);
       stop(true);
 
-      console.log(k.bold('Congratulations, your app is ready!'));
-      console.log(`Just run ${k.italic().yellow('npm run dev')} inside app's directory ${k.italic().cyan(name)}.`);
+      console.log(bold('Congratulations, your app is ready!'));
+      console.log(`Just run ${italic(yellow('npm run dev'))} inside app's directory ${italic(cyan(name))}.`);
       process.exit(0);
     }catch(err){
       if(stop) stop(false);
-      console.log(`${k.bold('Something wrong! Got the error:')}\n${err.message}`);
+      console.log(`${bold('Something wrong! Got the error:')}\n${err.message}`);
       process.exit(1);
     }
     
