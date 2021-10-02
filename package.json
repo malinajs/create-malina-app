@@ -34,7 +34,7 @@
     "esbuild": "^0.13.3",
     "fetch-repo-dir": "^1.0.4",
     "fs-extra": "^10.0.0",
-    "picocolors": "^0.1.0",
+    "nanocolors": "^0.2.12",
     "prompts": "^2.4.1",
     "sade": "^1.7.4",
     "uvu": "^0.5.1"

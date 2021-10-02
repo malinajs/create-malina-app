@@ -1,4 +1,4 @@
-import { red, green } from 'picocolors';
+import { red, green } from 'nanocolors';
 
 export function showMalinaBanner(){
     console.log('');

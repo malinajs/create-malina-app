@@ -6,7 +6,7 @@ import {getAppName,getTemplateRepo} from './prompts';
 import {showMalinaBanner} from './banner';
 import {loadTemplate,installDependencies} from './files';
 import {spinner} from './spinner';
-import { bold, italic, yellow, cyan } from 'picocolors';
+import { bold, italic, yellow, cyan } from 'nanocolors';
 
 const cli = sade('malina [name]', true);
 
