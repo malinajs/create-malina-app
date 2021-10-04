@@ -1,6 +1,6 @@
 {
   "name": "create-malina",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "CLI tool for MalinaJS Projects",
   "main": "bin/malina",
   "bin": {
