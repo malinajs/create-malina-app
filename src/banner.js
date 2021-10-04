@@ -1,4 +1,4 @@
-import { red, green } from 'picocolors';
+import { red, green } from 'yoctocolors';
 
 export function showMalinaBanner(){
     console.log('');

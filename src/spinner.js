@@ -1,4 +1,4 @@
-import { green, red, bold } from 'picocolors';
+import { green, red, bold } from 'yoctocolors';
 
 const spin = [
     `[${green('   ')}]`,
