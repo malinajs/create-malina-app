@@ -142,8 +142,6 @@ test('Run with dir in command line', async () => {
         },
     ],{cwd:TEST_DIR});
 
-    console.log(result);
-
     ok(result.err !== 'Incomplete story','Story is ok');
     ok(fs.existsSync(appdir),'App directory created');
     ok(fs.existsSync(somefile),'Template downloaded');
