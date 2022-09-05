@@ -10,6 +10,11 @@
         "value": "malinajs/template#esbuild"
     },
     { 
+        "title": "Default (esbuild) - dev",
+        "description": "Based on esbuild bundler dev version", 
+        "value": "malinajs/template#esbuild-dev"
+    },
+    { 
         "title": "Fullstack (esbuild,derver)", 
         "description": "Template for baking app with client and server", 
         "value": "malinajs/template#esbuild-fullstack"
